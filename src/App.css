@@ -5,11 +5,11 @@
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: sans-serif;
   background: #0a4f70;
 }
 
-button{
+button {
   cursor: pointer;
 }
