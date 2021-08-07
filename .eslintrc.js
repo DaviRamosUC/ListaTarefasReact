@@ -14,6 +14,8 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'react/state-in-constructor': 'off',
     'react/jsx-filename-extension': 0,
+    'react/prefer-stateless-function': 0,
   },
 };
