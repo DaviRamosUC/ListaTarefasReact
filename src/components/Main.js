@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 
-// Form
-import { FaPlus } from 'react-icons/fa';
-
-// Tarefas
-import { FaEdit, FaWindowClose } from 'react-icons/fa';
+import Form from './Form';
+import Tarefas from './Tarefas';
 
 import './Main.css';
 
@@ -27,8 +24,6 @@ export default class Main extends Component {
     const { tarefas } = this.state;
 
     if (tarefas === prevState.tarefas) return;
-
-    console.log('As tarefas mudaram', tarefas);
 
     localStorage.setItem('tarefas', JSON.stringify(tarefas));
   }
@@ -88,31 +83,17 @@ export default class Main extends Component {
       <div className="main">
         <h1>Lista de tarefas</h1>
 
-        <form onSubmit={this.handleSubmit} action="#" className="form">
-          <input onChange={this.handleChange} type="text" value={novaTarefa} />
-          <button type="submit">
-            <FaPlus />
-          </button>
-        </form>
+        <Form
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          novaTarefa={novaTarefa}
+        />
 
-        <ul className="tarefas">
-          {tarefas.map((tarefa, index) => (
-            <li key={tarefa}>
-              {tarefa}
-              <span>
-                <FaEdit
-                  className="edit"
-                  onClick={(e) => this.handleEdit(e, index)}
-                />
-
-                <FaWindowClose
-                  className="delete"
-                  onClick={(e) => this.handleDelete(e, index)}
-                />
-              </span>
-            </li>
-          ))}
-        </ul>
+        <Tarefas
+          tarefas={tarefas}
+          handleEdit={this.handleEdit}
+          handleDelete={this.handleDelete}
+        />
       </div>
     );
   }
